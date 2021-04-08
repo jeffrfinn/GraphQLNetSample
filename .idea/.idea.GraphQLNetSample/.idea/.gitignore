@@ -1,0 +1,11 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/.idea.GraphQLNetSample.iml
+/contentModel.xml
+/projectSettingsUpdater.xml
+# Datasource local storage ignored files
+/../../../../../../../../:\Code\Temp\GraphQLNetSample\GraphQLNetSample\.idea\.idea.GraphQLNetSample\.idea/dataSources/
+/dataSources.local.xml
