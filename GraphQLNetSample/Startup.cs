@@ -3,6 +3,8 @@ using GraphQL.DataLoader;
 using GraphQL.Server;
 using GraphQL.Server.Ui.GraphiQL;
 using GraphQLNetSample.GraphQL;
+using GraphQLNetSample.Repositories;
+using GraphQLNetSample.Repositories.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -18,9 +20,10 @@ namespace GraphQLNetSample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<MySchema>();
+            services.AddTransient<IOrdersStore, OrderStore>();
             services.AddSingleton<IDataLoaderContextAccessor, DataLoaderContextAccessor>();
             services.AddSingleton<DataLoaderDocumentListener>();
-            
+
             services.AddGraphQL((options, provider) =>
                 {
                     options.EnableMetrics = true;
@@ -29,8 +32,7 @@ namespace GraphQLNetSample
                 .AddGraphTypes()
                 .AddSystemTextJson()
                 .AddErrorInfoProvider(opt => opt.ExposeExceptionStackTrace = true)
-                .AddDataLoader()
-                .AddWebSockets();
+                .AddDataLoader();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,10 +44,10 @@ namespace GraphQLNetSample
             }
 
             app.UseWebSockets();
-            app.UseGraphQLWebSockets<MySchema>()
-                .UseGraphQL<MySchema>()
+            // app.UseGraphQLWebSockets<MySchema>()
+            app.UseGraphQL<MySchema>()
                 .UseGraphiQl("/graphiql")
-                .UseGraphiQLServer(new GraphiQLOptions());
+                .UseGraphQLGraphiQL();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
