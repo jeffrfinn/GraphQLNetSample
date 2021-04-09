@@ -12,11 +12,16 @@ namespace GraphQLNetSample.GraphQL
             (
                 "GetMyType",
                 "Retrieve MyType",
-                resolve: async c => new MyType
+                resolve: async c => new MyObject
                 {
                     Id = 1,
                     Name = "Kowoga"
                 });
+
+            FieldAsync<MyComplexQueryType>(
+                "GetComplexType",
+                "",
+                resolve: async c => new MyComplexObject());
         }
     }
 }

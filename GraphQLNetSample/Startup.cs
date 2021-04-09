@@ -1,4 +1,5 @@
 using GraphiQl;
+using GraphQL.DataLoader;
 using GraphQL.Server;
 using GraphQL.Server.Ui.GraphiQL;
 using GraphQLNetSample.GraphQL;
@@ -17,6 +18,9 @@ namespace GraphQLNetSample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<MySchema>();
+            services.AddSingleton<IDataLoaderContextAccessor, DataLoaderContextAccessor>();
+            services.AddSingleton<DataLoaderDocumentListener>();
+            
             services.AddGraphQL((options, provider) =>
                 {
                     options.EnableMetrics = true;

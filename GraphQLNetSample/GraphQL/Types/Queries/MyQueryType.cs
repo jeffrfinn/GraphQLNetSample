@@ -4,7 +4,7 @@ using GraphQLNetSample.Models;
 
 namespace GraphQLNetSample.GraphQL.Types.Queries
 {
-    public class MyQueryType: ObjectGraphType<MyType>
+    public class MyQueryType: ObjectGraphType<MyObject>
     {
         public MyQueryType()
         {
