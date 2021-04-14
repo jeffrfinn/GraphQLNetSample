@@ -11,15 +11,7 @@ namespace GraphQLNetSample.GraphQL
         public MySchema(IServiceProvider serviceProvider): base(serviceProvider)
         {
             Query = serviceProvider.GetRequiredService<MyQuery>();
-
-            // var listener = serviceProvider.GetRequiredService<DataLoaderDocumentListener>();
-            //
-            // var executer = new DocumentExecuter();
-            //
-            // var result = executer.ExecuteAsync(opts => 
-            // {
-            //     opts.Listeners.Add(listener);
-            // });
+            Mutation = serviceProvider.GetRequiredService<MyMutation>();
         }
     }
 }

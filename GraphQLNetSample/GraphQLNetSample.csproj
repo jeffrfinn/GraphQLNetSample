@@ -6,7 +6,6 @@
 
     <ItemGroup>
       <Folder Include="GraphQL\Messaging\Messages" />
-      <Folder Include="GraphQL\Types\Inputs" />
       <Folder Include="GraphQL\Types\Messages" />
     </ItemGroup>
 
