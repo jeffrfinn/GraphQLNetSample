@@ -1,6 +1,4 @@
 ﻿using System;
-using GraphQL;
-using GraphQL.DataLoader;
 using GraphQL.Types;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,6 +10,7 @@ namespace GraphQLNetSample.GraphQL
         {
             Query = serviceProvider.GetRequiredService<MyQuery>();
             Mutation = serviceProvider.GetRequiredService<MyMutation>();
+            Subscription = serviceProvider.GetRequiredService<MySubscription>();
         }
     }
 }
